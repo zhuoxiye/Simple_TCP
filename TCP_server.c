@@ -6,7 +6,7 @@
 #include <arpa/inet.h>
 #include <pthread.h>
 
-#define MAX_LISTEN 3
+#define MAX_LISTEN 10
 
 int client_socket[MAX_LISTEN];
 int num_client;
@@ -74,10 +74,7 @@ void main(){
 
 	//loop for detecting connections
 	while(1){
-		/*if(num_client > MAX_LISTEN){
-			printf("exceed the MAX_LISTEN");
-			continue;
-		}*/
+		
 		client_socket[num_client] = accept(server_socket, (struct sockaddr*) &client_address,&len);
 		if(client_socket[num_client] == -1){
 			printf("accept error.\n");
